@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Param, Post, Query, Redirect } from '@nestjs/common';
-import { AppService } from './app.service';
-import { CreateAppDto } from './create-app.dto';
+import { AppService } from './first.service';
+import { createFirstDto } from './dto/create-first.dto';
 
-@Controller()
+@Controller('first')
 export class AppController {
     constructor(private readonly appService: AppService) { }
 
@@ -29,7 +29,7 @@ export class AppController {
         return `This action returns a #${params.id} cat`;
     }
     @Post()
-    async create(@Body() createAppDto: CreateAppDto): Promise<string> {
+    async create(@Body() createFirstDto: createFirstDto): Promise<string> {
         return 'This action adds a new cat';
     }
 }

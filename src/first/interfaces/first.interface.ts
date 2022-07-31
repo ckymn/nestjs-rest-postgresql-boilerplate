@@ -1,4 +1,4 @@
-export class CreateAppDto {
+export interface AppInterface {
     name: string;
     age: number;
     email: string;
