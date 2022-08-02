@@ -1,5 +1,12 @@
+import { IsInt, IsString } from "class-validator";
+
 export class CreateCatsDto {
-    name: string;
-    age: number;
-    breed: string;
+    @IsString()
+    readonly name: string;
+
+    @IsInt()
+    readonly age: number;
+
+    @IsString()
+    readonly breed: string;
 }
