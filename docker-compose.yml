@@ -1,11 +1,31 @@
-version: '3'
+version: '3.8'
 services:
   db:
+    container_name: postgres_container
     image: postgres
-    restart: unless-stopped
+    restart: always
+    environment:
+      POSTGRES_DB: menual_pg
+      POSTGRES_USER: ckymn
+      POSTGRES_PASSWORD: menual_123.
+      PGDATA: /var/lib/postgresql/data
     ports:
       - '5432:5432'
-    environment:
-      POSTGRES_PASSWORD: SuperSecret!23
     volumes:
-      - .docker-data/postgres:/var/li
+      - db-data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4:5.5
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: menual_123.
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - '8080:80'
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+volumes:
+  db-data:
+  pgadmin-data:
