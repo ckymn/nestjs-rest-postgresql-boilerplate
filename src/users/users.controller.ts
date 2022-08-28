@@ -25,7 +25,6 @@ export class UsersController {
   @UseInterceptors(ClassSerializerInterceptor)
   @Post()
   create(@Body() createUserDto: CreateUserDto): Promise<User> {
-    console.log('controller ->', createUserDto);
     return this.usersService.create(createUserDto);
   }
 
